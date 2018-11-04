@@ -17,33 +17,43 @@ describe('Class Character', () => {
     describe('getDirection', () => {
         test('should get current position', () => {
             character = new Character({ direction: "North" })
-            expect(character.getDirection()).toEqual("North")
+            expect(character.getDirection()).toEqual("north")
         })
     })
     describe('turnLeft', () => {
         test('should rotate counter clockwise', () => {
             character = new Character({ direction: "North" })
             character.turnLeft()
-            expect(character._direction).toEqual("West")
+            expect(character._dir).toEqual("west")
         })
     })
     describe('turnRight', () => {
         test('should rotate clockwise', () => {
             character = new Character({ direction: "North" })
             character.turnRight()
-            expect(character._direction).toEqual("East")
+            expect(character._dir).toEqual("east")
         })
     })
     describe('moveForward', () => {
-        test('should should move forward number of spaces defined in arg', () => {
+        test('should should move forward number of spaces North', () => {
             character = new Character({ direction: "North", startPoint: [0,0] })
+            character.moveForward(6)
+            expect(character._loc).toEqual([0,6])
+        })
+        test('should should move forward number of spaces East', () => {
+            character = new Character({ direction: "East", startPoint: [0,0] })
             character.moveForward(6)
             expect(character._loc).toEqual([6,0])
         })
-        test('should should move forward number of spaces defined based upon facing direction', () => {
-            character = new Character({ direction: "East", startPoint: [0,0] })
+        test('should should move forward number of spaces South', () => {
+            character = new Character({ direction: "South", startPoint: [0,6] })
             character.moveForward(6)
-            expect(character._loc).toEqual([0,6])
+            expect(character._loc).toEqual([0,0])
+        })
+        test('should should move forward number of spaces West', () => {
+            character = new Character({ direction: "West", startPoint: [6,0] })
+            character.moveForward(6)
+            expect(character._loc).toEqual([0,0])
         })
     })
     describe('undueMove', () => {
