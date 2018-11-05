@@ -60,7 +60,7 @@ describe('Class Character', () => {
         test('should undue the previous move', () => {
             character = new Character({ direction: "North", startPoint: [0,0] })
             character.moveForward(3)
-            expect(character._loc).toEqual([3,0])
+            expect(character._loc).toEqual([0,3])
             character.undueMove()
             expect(character._loc).toEqual([0,0])
         })

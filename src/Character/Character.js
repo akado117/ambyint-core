@@ -9,7 +9,7 @@ const numOfDirections = directionArray.length - 1;
 
 const directionMapper = {
     north: [0,1],
-    east: [1, ],
+    east: [1, 0],
     south: [0, -1],
     west: [-1, 0]
 }
@@ -58,7 +58,9 @@ class Character {
         }
         this._loc = newLoc;
     }
-    undueMove() {}
+    undueMove() {
+        this._loc = this._prevLoc
+    }
 }
 
 export default Character;

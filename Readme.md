@@ -28,5 +28,5 @@ Build out class structer -> Build out unit tests -> Fill out functionality
 
 ### Updates to plan during implementation
 - Added in undueMove function to undue moves that are invalid
-- Added const to Character class for mapping directions
+- Added const to Character class for mapping directions 
 
