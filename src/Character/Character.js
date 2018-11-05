@@ -15,7 +15,7 @@ const directionMapper = {
 };
 
 class Character {
-  constructor({ startPoint, direction } = {}) {
+  constructor({ startPoint, direction, character } = {}) {
     this._loc = startPoint || [];
     this._prevLoc = [0, 0];
     if (typeof direction === 'string') {
@@ -25,6 +25,7 @@ class Character {
       this._dirIdx = Math.floor((Math.random() * 4));// gets a random direction
       this._dir = directionArray[this._dirIdx];
     }
+    this._character = character
   }
 
   getPosition() {
@@ -33,6 +34,10 @@ class Character {
 
   getDirection() {
     return this._dir;
+  }
+
+  getCharacter() {
+    return this._character;
   }
 
   turnLeft() {

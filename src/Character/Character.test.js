@@ -20,6 +20,12 @@ describe('Class Character', () => {
       expect(character.getDirection()).toEqual('north');
     });
   });
+  describe('getCharacter', () => {
+    test('should get character property', () => {
+      character = new Character({ character: 'test' });
+      expect(character.getCharacter()).toEqual('test');
+    });
+  });
   describe('turnLeft', () => {
     test('should rotate counter clockwise', () => {
       character = new Character({ direction: 'North' });
