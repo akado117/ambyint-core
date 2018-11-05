@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "test": "jest --watchAll"
+    "test": "jest -o --watch"
   },
   "author": "",
   "license": "ISC",
