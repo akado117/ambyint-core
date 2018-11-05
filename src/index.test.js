@@ -44,4 +44,52 @@ describe('Main Class', () => {
             expect(setObjCall.calls[3][1]).toEqual([3,3]);
         })
     })
+    describe('report', () => {
+        test('should return all characters stored within Main', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            expect(planet.report().length).toEqual(4)
+            expect(planet.report()[1]).toBe(planet._characters[1])
+        })
+        test('should return character at index passed in', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            expect(planet.report(1).length).toEqual(undefined)
+            expect(planet.report(1)).toBe(planet._characters[1])
+        })
+    })
+    describe('turnLeft', () => {
+        test('should call first characters turnLeft function', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet.turnLeft();
+            expect(Character.mock.instances[0].turnLeft.mock.calls[0].length).toEqual(0)
+        })
+        test('should call character at indexes turnLeft function', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet.turnLeft(2);
+            expect(Character.mock.instances[2].turnLeft.mock.calls[0].length).toEqual(0)
+        })
+    })
+    describe('turnRight', () => {
+        test('should call first characters turnRight function', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet.turnRight();
+            expect(Character.mock.instances[0].turnRight.mock.calls[0].length).toEqual(0)
+        })
+        test('should call character at indexes turnRight function', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet.turnRight(2);
+            expect(Character.mock.instances[2].turnRight.mock.calls[0].length).toEqual(0)
+        })
+    })
+    describe('moveForward', () => {
+        test('should make first character move forward inputed number of spaces', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet.moveForward(2);
+            expect(Character.mock.instances[0].moveForward.mock.calls[0][0]).toEqual(2)
+        })
+        test('should make character at index move forward inputed number of spaces', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet.moveForward(2,2);
+            expect(Character.mock.instances[2].moveForward.mock.calls[0][0]).toEqual(2)
+        })
+    })
 })

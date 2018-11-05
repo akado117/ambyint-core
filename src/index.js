@@ -1,6 +1,7 @@
 import Tatooine from './Tatooine/Tatooine';
 import Character from './Character/Character';
 import { getRandomInt } from './helpers/dataHelper'
+import { timingSafeEqual } from 'crypto';
 
 class Main {
     constructor({ characters, locations, gridSize } = {}) {
@@ -25,6 +26,32 @@ class Main {
             this._characters.push(character)
             this._grid.setObjectAtLocation(character, initialCoords)
         }
+    }
+
+    report(idx) {
+        if (typeof idx !== 'undefined') {
+            return this._characters[idx]
+        }
+        return this._characters
+    }
+
+    turnLeft(idx) {
+        if (typeof idx !== 'undefined') {
+            return this._characters[idx].turnLeft()
+        }
+        return this._characters[0].turnLeft()
+    }
+    turnRight(idx) {
+        if (typeof idx !== 'undefined') {
+            return this._characters[idx].turnRight()
+        }
+        return this._characters[0].turnRight()
+    }
+    moveForward(spaces, idx) {
+        if (typeof idx !== 'undefined') {
+            return this._characters[idx].moveForward(spaces)
+        }
+        return this._characters[0].moveForward(spaces)
     }
 }
 
