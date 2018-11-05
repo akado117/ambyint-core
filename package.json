@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "test": "jest -o --watch"
+    "test": "jest -o --watch",
+    "lint": "eslint src --fix"
   },
   "author": "",
   "license": "ISC",

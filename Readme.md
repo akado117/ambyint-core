@@ -16,7 +16,7 @@ The play grid defines a play area, and should notify whenever a character within
 -- Boundary detection
 -- Add/Remove from grid (found during implementation)
 - Run Class
--- Construtor to initilize locations of plays
+-- Construtor to initilize locations of Characters
 -- Report functionality
 -- Reset functionality
 -- Expose move functions and check for valid move and win condition
@@ -32,3 +32,4 @@ Build out class structer -> Build out unit tests -> Fill out functionality
 - Added const to Character class for mapping directions 
 - Added in ability to add and remove from grid as well as exposing grid (for consuming frameworks to use)
 - Moved building grid into its own internal function within Tatooine
+- Added in ability for character class to house a user defined feature. such as a name or url to an image

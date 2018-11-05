@@ -1,1 +1,1 @@
-import Tatooine from './Tatooine'
+import Tatooine from './Tatooine';
