@@ -48,10 +48,10 @@ class Main {
         return this._characters[0].turnRight()
     }
     moveForward(spaces, idx) {
-        if (typeof idx !== 'undefined') {
-            return this._characters[idx].moveForward(spaces)
-        }
-        return this._characters[0].moveForward(spaces)
+        const character = this._characters[idx] || this._characters[0]
+        character.moveForward(spaces);
+        const moveValid = this._grid.checkIfCoordsAreValid(character.getPosition())
+        if (!moveValid) character.undueMove()
     }
 }
 

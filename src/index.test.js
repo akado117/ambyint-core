@@ -6,7 +6,8 @@ jest.mock('./Tatooine/Tatooine', () => {
     return jest.fn().mockImplementation(function() {
       return {
           getGrid: jest.fn().mockImplementation( () => [[undefined, undefined], [undefined, undefined]]),
-          setObjectAtLocation: jest.fn().mockImplementation(() => {})
+          setObjectAtLocation: jest.fn().mockImplementation(() => {}),
+          checkIfCoordsAreValid: jest.fn().mockImplementation(() => {})
         };
     });
   })
@@ -90,6 +91,15 @@ describe('Main Class', () => {
             const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
             planet.moveForward(2,2);
             expect(Character.mock.instances[2].moveForward.mock.calls[0][0]).toEqual(2)
+        })
+        test('should return false if coords are out of bounds when moving and then undue character move', () => {
+            const planet = new Main({characters: ['this', 'is', 'a', 'character'], locations: [[0,0],[1,1],[2,2],[3,3]]})
+            planet._grid.checkIfCoordsAreValid.mockImplementation(() => false)
+            planet.moveForward(2);
+            expect(Character.mock.instances[0].moveForward.mock.calls[0][0]).toEqual(2)
+            expect(Character.mock.instances[0].getPosition.mock.calls[0].length).toEqual(0)
+            expect(planet._grid.checkIfCoordsAreValid).toHaveBeenCalledTimes(1)
+            expect(Character.mock.instances[0].undueMove.mock.calls[0].length).toEqual(0)
         })
     })
 })

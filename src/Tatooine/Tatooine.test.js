@@ -51,4 +51,26 @@ describe('Class Tatooine', () => {
       expect(tatooine._grid[4][4]).toEqual(undefined);
     });
   });
+  describe('checkIfCoordsAreValid', () => {
+    test('should return true if valid coords', () => {
+      const tatooine = new Tatooine(4,4);
+      expect(tatooine.checkIfCoordsAreValid([3,3])).toEqual(true)
+    });
+    test('should return false if coords out of bounds north', () => {
+        const tatooine = new Tatooine(4,4);
+        expect(tatooine.checkIfCoordsAreValid([2,4])).toEqual(false)
+    });
+    test('should return false if coords out of bounds south', () => {
+        const tatooine = new Tatooine(4,4);
+        expect(tatooine.checkIfCoordsAreValid([2,-1])).toEqual(false)
+    });
+    test('should return false if coords out of bounds east', () => {
+        const tatooine = new Tatooine(4,4);
+        expect(tatooine.checkIfCoordsAreValid([4,2])).toEqual(false)
+    });
+    test('should return false if coords out of bounds west', () => {
+        const tatooine = new Tatooine(4,4);
+        expect(tatooine.checkIfCoordsAreValid([-1,2])).toEqual(false)
+    });
+  });
 });
