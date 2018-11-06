@@ -41,11 +41,11 @@ class Tatooine {
     const height = this._grid[0].length;
 
     // x is out of bounds of grid
-    const isOutsideWidth = x < 0 || x >= width
-    const isOutsideHeight = y < 0 || y >= height 
+    const isOutsideWidth = x < 0 || x >= width;
+    const isOutsideHeight = y < 0 || y >= height;
 
     if (isOutsideHeight || isOutsideWidth) return false;
-    
+
     return true;
   }
 }

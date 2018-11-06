@@ -16,19 +16,19 @@ const directionMapper = {
 
 class Character {
   constructor({ startPoint, direction, character } = {}) {
-    if (startPoint && !Array.isArray(startPoint)) throw new Error('Please pass in an array as start point')
+    if (startPoint && !Array.isArray(startPoint)) throw new Error('Please pass in an array as start point');
 
     this._loc = startPoint || [];
     this._prevLoc = [0, 0];
 
-    //parse direction fed in and set dir to it
-    //dirIdx used to make it easy to know when directions need to wrap around to beginning again
+    // parse direction fed in and set dir to it
+    // dirIdx used to make it easy to know when directions need to wrap around to beginning again
     if (typeof direction === 'string') {
-      const lwrCaseDir = direction.toLowerCase()
+      const lwrCaseDir = direction.toLowerCase();
 
       this._dirIdx = directionArray.indexOf(lwrCaseDir);
-      if (this._dirIdx === -1) throw new Error('Please pass in a valid direction: north, east, south, west')
-      
+      if (this._dirIdx === -1) throw new Error('Please pass in a valid direction: north, east, south, west');
+
       this._dir = lwrCaseDir;
     } else {
       // gets a random direction
@@ -68,7 +68,7 @@ class Character {
     this._dir = directionArray[this._dirIdx];
   }
 
-  moveForward(spaces = 1) { 
+  moveForward(spaces = 1) {
     this._prevLoc = this._loc;
     const newLoc = [];
 

@@ -2,10 +2,10 @@ import Character from './Character';
 
 describe('Class Character', () => {
   let character;
-  let initialCharacterInfo
+  let initialCharacterInfo;
   beforeEach(() => {
     initialCharacterInfo = { direction: 'North', startPoint: [0, 0] };
-  })
+  });
   describe('getPosition', () => {
     test('should get current position', () => {
       character = new Character(initialCharacterInfo);
@@ -20,7 +20,7 @@ describe('Class Character', () => {
   });
   describe('getCharacter', () => {
     test('should get character property', () => {
-      initialCharacterInfo.character = 'test'
+      initialCharacterInfo.character = 'test';
       character = new Character(initialCharacterInfo);
       expect(character.getCharacter()).toEqual('test');
     });
@@ -46,7 +46,7 @@ describe('Class Character', () => {
       expect(character._loc).toEqual([0, 6]);
     });
     test('should should move forward number of spaces East', () => {
-      initialCharacterInfo.direction = 'East'
+      initialCharacterInfo.direction = 'East';
       character = new Character(initialCharacterInfo);
       character.moveForward(6);
       expect(character._loc).toEqual([6, 0]);

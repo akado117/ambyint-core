@@ -5,8 +5,7 @@ const Main = require('../dist/ambyint').default;
 const characterObj = { characters: ['R2-D2', 'Obi Wan Kenobi'] }
 const planet = new Main(characterObj);
 
-const commands = ['LAND', 'REPORT', 'RIGHT', 'LEFT', 'MOVE']
-
+//functions specific to game implementation and kept out of core classes
 function report(characters) {
     const [ r2d2, obiWan ] = characters
     console.log(chalk.cyan(r2d2.getCharacter()), 'is at', chalk.magenta(r2d2.getPosition()), 'facing', chalk.green(r2d2.getDirection()))
@@ -35,11 +34,17 @@ vorpal
     });
 
 vorpal
-    .command('MOVE <spaces>', 'Will move R2-D2 x number of spaces forward')
+    .command('MOVE <spaces>', 'Will move R2-D2 x number of spaces forward - please use whole numbers')
     .action(function(args, callback) {
-        const spaces = parseInt(args.spaces);
+        const { spaces } = args;
+
+        if (!Number.isInteger(spaces)) {
+            console.log(chalk.bgRed('Please use only whole numbers for spaces'))
+            return callback()
+        }
+        const numSpaces = parseInt(spaces);
         
-        const wasMoveSuccessful = planet.moveForward(spaces)
+        const wasMoveSuccessful = planet.moveForward(numSpaces)
         if(!wasMoveSuccessful) console.log(chalk.bgRed('Please select a move that\'s within bounds'))
 
         checkWin(planet.report())
