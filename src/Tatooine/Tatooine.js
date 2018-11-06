@@ -25,6 +25,7 @@ class Tatooine {
       return false;
     }
     this._grid[x][y] = obj;
+    return true;
   }
 
   removeObjectFromLocation(coords) {
@@ -36,16 +37,16 @@ class Tatooine {
   }
 
   checkIfCoordsAreValid([x, y] = []) {
-      const width = this._grid.length
-      const height = this._grid[0].length
+    const width = this._grid.length;
+    const height = this._grid[0].length;
 
-      if (x < 0 || x >= width){//x is out of bounds of grid
-          return false
-      }
-      if (y < 0 || y >= height) {
-          return false
-      }
-      return true
+    if (x < 0 || x >= width) { // x is out of bounds of grid
+      return false;
+    }
+    if (y < 0 || y >= height) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -4,8 +4,8 @@
   "description": "core functionality for a lil robot to find his friend",
   "main": "./src/index.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "develop": "WEBPACK_ENV=dev webpack --mode development --watch",
+    "build": "WEBPACK_ENV=prod webpack --mode production",
     "test": "jest -o --watch",
     "lint": "eslint src --fix"
   },
@@ -19,13 +19,16 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.27.1",
     "jest": "^23.6.0",
-    "webpack": "^4.24.0",
+    "path": "^0.12.7",
+    "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }
 }

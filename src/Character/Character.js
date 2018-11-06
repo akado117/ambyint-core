@@ -25,7 +25,7 @@ class Character {
       this._dirIdx = Math.floor((Math.random() * 4));// gets a random direction
       this._dir = directionArray[this._dirIdx];
     }
-    this._character = character
+    this._character = character;
   }
 
   getPosition() {
