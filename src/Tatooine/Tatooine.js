@@ -1,6 +1,6 @@
 class Tatooine {
   constructor(width, height) {
-    if (width && height) {
+    if (width && height && typeof width === 'number' && typeof height === 'number') {
       this._grid = this._buildGrid(width, height);
     } else {
       this._grid = this._buildGrid(100, 100);
@@ -40,12 +40,12 @@ class Tatooine {
     const width = this._grid.length;
     const height = this._grid[0].length;
 
-    if (x < 0 || x >= width) { // x is out of bounds of grid
-      return false;
-    }
-    if (y < 0 || y >= height) {
-      return false;
-    }
+    // x is out of bounds of grid
+    const isOutsideWidth = x < 0 || x >= width
+    const isOutsideHeight = y < 0 || y >= height 
+
+    if (isOutsideHeight || isOutsideWidth) return false;
+    
     return true;
   }
 }

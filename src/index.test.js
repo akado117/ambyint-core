@@ -98,7 +98,7 @@ describe('Main Class', () => {
       expect(Character.mock.instances[0].moveForward.mock.calls[0][0]).toEqual(2);
       expect(Character.mock.instances[0].getPosition.mock.calls[0].length).toEqual(0);
       expect(planet._grid.checkIfCoordsAreValid).toHaveBeenCalledTimes(1);
-      expect(Character.mock.instances[0].undueMove.mock.calls[0].length).toEqual(0);
+      expect(Character.mock.instances[0].undoMove.mock.calls[0].length).toEqual(0);
     });
   });
 });

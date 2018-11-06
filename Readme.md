@@ -41,9 +41,10 @@ The play grid defines a play area, and should notify whenever a character within
 
 
 ### Initialize project 
-Node: Engine, Webpack: packing util, Jest: testing framework, ESLint: code quality
+Node: Env, Webpack: packaging util, Jest: testing framework, ESLint: code quality
 Build out a node package and then consume with a command line utility, and later frontend app. 
 Build out class structer -> Build out unit tests -> Fill out functionality
+Future: Consume package with frontend app for a cleaner ui
 
 ### Updates to plan during implementation
 - Added in undueMove function to undue moves that are invalid

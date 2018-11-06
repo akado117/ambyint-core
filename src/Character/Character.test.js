@@ -2,52 +2,52 @@ import Character from './Character';
 
 describe('Class Character', () => {
   let character;
-  // beforeEach(() => {
-  //     character = new Character()
-  // })
-  // afterEach(() => {
-  //     character = undefined;
-  // })
+  let initialCharacterInfo
+  beforeEach(() => {
+    initialCharacterInfo = { direction: 'North', startPoint: [0, 0] };
+  })
   describe('getPosition', () => {
     test('should get current position', () => {
-      character = new Character({ startPoint: [1, 1] });
-      expect(character.getPosition()).toEqual([1, 1]);
+      character = new Character(initialCharacterInfo);
+      expect(character.getPosition()).toEqual([0, 0]);
     });
   });
   describe('getDirection', () => {
     test('should get current position', () => {
-      character = new Character({ direction: 'North' });
+      character = new Character(initialCharacterInfo);
       expect(character.getDirection()).toEqual('north');
     });
   });
   describe('getCharacter', () => {
     test('should get character property', () => {
-      character = new Character({ character: 'test' });
+      initialCharacterInfo.character = 'test'
+      character = new Character(initialCharacterInfo);
       expect(character.getCharacter()).toEqual('test');
     });
   });
   describe('turnLeft', () => {
     test('should rotate counter clockwise', () => {
-      character = new Character({ direction: 'North' });
+      character = new Character(initialCharacterInfo);
       character.turnLeft();
       expect(character._dir).toEqual('west');
     });
   });
   describe('turnRight', () => {
     test('should rotate clockwise', () => {
-      character = new Character({ direction: 'North' });
+      character = new Character(initialCharacterInfo);
       character.turnRight();
       expect(character._dir).toEqual('east');
     });
   });
   describe('moveForward', () => {
     test('should should move forward number of spaces North', () => {
-      character = new Character({ direction: 'North', startPoint: [0, 0] });
+      character = new Character(initialCharacterInfo);
       character.moveForward(6);
       expect(character._loc).toEqual([0, 6]);
     });
     test('should should move forward number of spaces East', () => {
-      character = new Character({ direction: 'East', startPoint: [0, 0] });
+      initialCharacterInfo.direction = 'East'
+      character = new Character(initialCharacterInfo);
       character.moveForward(6);
       expect(character._loc).toEqual([6, 0]);
     });
@@ -62,12 +62,12 @@ describe('Class Character', () => {
       expect(character._loc).toEqual([0, 0]);
     });
   });
-  describe('undueMove', () => {
+  describe('undoMove', () => {
     test('should undue the previous move', () => {
-      character = new Character({ direction: 'North', startPoint: [0, 0] });
+      character = new Character(initialCharacterInfo);
       character.moveForward(3);
       expect(character._loc).toEqual([0, 3]);
-      character.undueMove();
+      character.undoMove();
       expect(character._loc).toEqual([0, 0]);
     });
   });

@@ -1,5 +1,5 @@
-
-const directionArray = [// since this is all behind an API going to use little error checking
+// since this is all behind an API going to use little error checking
+const directionArray = [
   'north',
   'east',
   'south',
@@ -16,13 +16,23 @@ const directionMapper = {
 
 class Character {
   constructor({ startPoint, direction, character } = {}) {
+    if (startPoint && !Array.isArray(startPoint)) throw new Error('Please pass in an array as start point')
+
     this._loc = startPoint || [];
     this._prevLoc = [0, 0];
+
+    //parse direction fed in and set dir to it
+    //dirIdx used to make it easy to know when directions need to wrap around to beginning again
     if (typeof direction === 'string') {
-      this._dir = direction.toLowerCase();
-      this._dirIdx = directionArray.indexOf(direction.toLowerCase());
+      const lwrCaseDir = direction.toLowerCase()
+
+      this._dirIdx = directionArray.indexOf(lwrCaseDir);
+      if (this._dirIdx === -1) throw new Error('Please pass in a valid direction: north, east, south, west')
+      
+      this._dir = lwrCaseDir;
     } else {
-      this._dirIdx = Math.floor((Math.random() * 4));// gets a random direction
+      // gets a random direction
+      this._dirIdx = Math.floor((Math.random() * 4));
       this._dir = directionArray[this._dirIdx];
     }
     this._character = character;
@@ -58,7 +68,7 @@ class Character {
     this._dir = directionArray[this._dirIdx];
   }
 
-  moveForward(spaces = 1) { // defaulting to 1
+  moveForward(spaces = 1) { 
     this._prevLoc = this._loc;
     const newLoc = [];
 
@@ -69,7 +79,7 @@ class Character {
     this._loc = newLoc;
   }
 
-  undueMove() {
+  undoMove() {
     this._loc = this._prevLoc;
   }
 }

@@ -53,7 +53,7 @@ class Main {
     character.moveForward(spaces);
     const moveValid = this._grid.checkIfCoordsAreValid(character.getPosition());
     if (!moveValid) {
-      character.undueMove();
+      character.undoMove();
       return false;
     }
     return true;

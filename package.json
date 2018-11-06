@@ -6,9 +6,10 @@
   "scripts": {
     "develop": "WEBPACK_ENV=dev webpack --mode development",
     "build": "WEBPACK_ENV=prod webpack --mode production",
-    "test": "jest -o --watch",
+    "test": "jest",
+    "test:watch": "jest -o --watch",
     "lint": "eslint src --fix",
-    "run": "node cli/cli"
+    "start": "node cli/cli"
   },
   "author": "",
   "license": "ISC",
