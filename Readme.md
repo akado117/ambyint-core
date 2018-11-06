@@ -1,3 +1,21 @@
+# HOW TO R2D2
+Clone this repo:
+```sh
+$ git clone https://github.com/akado117/ambyint-core.git
+```
+Navigate to your newly cloned directory
+
+Run the CLI program
+```sh
+$ npm run run
+```
+If you would like to recompile the core code:
+```sh
+$ npm run build //prod
+$ npm run develop //develop -- not minified
+```
+
+
 # Lost R2D2 Project thoughts
 
 ### Preproject problem break down
