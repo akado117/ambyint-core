@@ -52,7 +52,11 @@ class Main {
     const character = this._characters[idx] || this._characters[0];
     character.moveForward(spaces);
     const moveValid = this._grid.checkIfCoordsAreValid(character.getPosition());
-    if (!moveValid) character.undueMove();
+    if (!moveValid) {
+      character.undueMove();
+      return false;
+    }
+    return true;
   }
 }
 

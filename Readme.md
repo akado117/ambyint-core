@@ -33,3 +33,4 @@ Build out class structer -> Build out unit tests -> Fill out functionality
 - Added in ability to add and remove from grid as well as exposing grid (for consuming frameworks to use)
 - Moved building grid into its own internal function within Tatooine
 - Added in ability for character class to house a user defined feature. such as a name or url to an image
+- Added in return true/false for main depending on if move is successful 

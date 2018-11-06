@@ -2,9 +2,9 @@
   "name": "ambyint-core",
   "version": "1.0.0",
   "description": "core functionality for a lil robot to find his friend",
-  "main": "./src/index.js",
+  "main": "./dist/ambyint.js",
   "scripts": {
-    "develop": "WEBPACK_ENV=dev webpack --mode development --watch",
+    "develop": "WEBPACK_ENV=dev webpack --mode development",
     "build": "WEBPACK_ENV=prod webpack --mode production",
     "test": "jest -o --watch",
     "lint": "eslint src --fix"
@@ -30,5 +30,9 @@
     "path": "^0.12.7",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "vorpal": "^1.12.0"
   }
 }
