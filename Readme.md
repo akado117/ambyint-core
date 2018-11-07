@@ -7,7 +7,7 @@ Navigate to your newly cloned directory
 
 Run the CLI program
 ```sh
-$ npm run run
+$ npm start
 ```
 If you would like to recompile the core code:
 ```sh
