@@ -4,26 +4,45 @@ import { getRandomInt } from './helpers/dataHelper';
 
 class Main {
   constructor({ characters, locations, gridSize } = {}) {
+    this._characters = [];
     this.reset({ characters, locations, gridSize });
   }
 
+  // original implementation renewed both Tatooine and Characters
+  // new implementation keeps character objects and reinitializes them then discards unneeded ones
   reset({ characters = [], locations = [], gridSize = [] } = {}) {
     const [width, height] = gridSize;
-    this._grid = new Tatooine(width, height);
+    this._grid = this._grid || new Tatooine(width, height);
     const grid = this._grid.getGrid();
     const gridL = grid[0].length;
     const gridW = grid.length;
 
+    const oldChars = this._characters;
+
     this._characters = [];
     for (const charIdx in characters) {
       const initialCoords = locations[charIdx] || [getRandomInt(gridW), getRandomInt(gridL)];
-      const character = new Character({
+      const newCharConstructorArgs = {
         character: characters[charIdx],
         startPoint: initialCoords,
-      });
+      };
+
+      // reInitialize characters (performance reasons)
+      let character = oldChars[charIdx];
+      if (character) {
+        this._grid.removeObjectFromLocation(character.getPosition());
+        character.constructor(newCharConstructorArgs);
+      } else {
+        character = new Character(newCharConstructorArgs);
+      }
 
       this._characters.push(character);
       this._grid.setObjectAtLocation(character, initialCoords);
+    }
+
+    // remove remaining characters from grid
+    for (let i = characters.length; i < oldChars.length; i++) {
+      this._grid.removeObjectFromLocation(oldChars[i]);
     }
   }
 
